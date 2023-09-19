@@ -40,7 +40,7 @@ class WeatherCubit extends HydratedCubit<WeatherState> {
 
   Future<void> refreshWeather() async {
     if (!state.status.isSuccess) return;
-    if (state.weather == Weather.empty) return;
+    if (state.weather == Weather.empty()) return;
     try {
       final weather = Weather.fromRepository(
         await _weatherRepository.getWeather(state.weather.location),
@@ -73,7 +73,7 @@ class WeatherCubit extends HydratedCubit<WeatherState> {
     }
 
     final weather = state.weather;
-    if (weather != Weather.empty) {
+    if (weather != Weather.empty()) {
       final temperature = weather.temperature;
       final value = units.isCelsius
           ? temperature.value.toCelsius()
@@ -88,11 +88,18 @@ class WeatherCubit extends HydratedCubit<WeatherState> {
   }
 
   @override
-  WeatherState fromJson(Map<String, dynamic> json) =>
-      WeatherStateMapper.fromMap(json);
+  WeatherState fromJson(Map<String, dynamic> json) {
+    print('json\n\n');
+    print(json);
+    return WeatherStateMapper.fromMap(json);
+  }
 
   @override
-  Map<String, dynamic> toJson(WeatherState state) => state.toMap();
+  Map<String, dynamic> toJson(WeatherState state) {
+    print('state\n\n');
+    print(state);
+    return state.toMap();
+  }
 }
 
 extension on double {

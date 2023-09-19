@@ -31,18 +31,18 @@ class Weather with WeatherMappable {
   factory Weather.fromRepository(weather_repository.Weather weather) {
     return Weather(
       condition: weather.condition,
-      lastUpdated: DateTime.now(),
+      lastUpdated: DateTime.now().toUtc(),
       location: weather.location,
       temperature: Temperature(value: weather.temperature),
     );
   }
 
-  static final empty = Weather(
-    condition: weather_repository.WeatherCondition.unknown,
-    lastUpdated: DateTime(0),
-    temperature: const Temperature(value: 0),
-    location: '--',
-  );
+  factory Weather.empty() => Weather(
+        condition: weather_repository.WeatherCondition.unknown,
+        lastUpdated: DateTime(0).toUtc(),
+        temperature: const Temperature(value: 0),
+        location: '--',
+      );
 
   final weather_repository.WeatherCondition condition;
   final DateTime lastUpdated;

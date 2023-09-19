@@ -16,7 +16,7 @@ final class WeatherState with WeatherStateMappable {
     this.status = WeatherStatus.initial,
     this.temperatureUnits = TemperatureUnits.celsius,
     Weather? weather,
-  }) : weather = weather ?? Weather.empty;
+  }) : weather = weather ?? Weather.empty();
 
   final WeatherStatus status;
   final Weather weather;
