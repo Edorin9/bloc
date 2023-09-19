@@ -44,9 +44,6 @@ class OpenMeteoApiClient {
     }
 
     final locationJson = jsonDecode(locationResponse.body) as Map;
-    print(query);
-    print(locationResponse.body);
-    print(locationJson);
 
     if (!locationJson.containsKey('results')) throw LocationNotFoundFailure();
 
@@ -75,7 +72,6 @@ class OpenMeteoApiClient {
     }
 
     final bodyJson = jsonDecode(weatherResponse.body) as Map<String, dynamic>;
-    print(bodyJson);
 
     if (!bodyJson.containsKey('current_weather')) {
       throw WeatherNotFoundFailure();
