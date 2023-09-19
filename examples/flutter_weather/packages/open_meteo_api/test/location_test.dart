@@ -6,7 +6,7 @@ void main() {
     group('fromJson', () {
       test('returns correct Location object', () {
         expect(
-          Location.fromJson(
+          LocationMapper.fromMap(
             <String, dynamic>{
               'id': 4887398,
               'name': 'Chicago',

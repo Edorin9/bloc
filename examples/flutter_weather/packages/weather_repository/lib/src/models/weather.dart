@@ -1,8 +1,8 @@
-import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-part 'weather.g.dart';
+part 'weather.mapper.dart';
 
+@MappableEnum()
 enum WeatherCondition {
   clear,
   rainy,
@@ -11,23 +11,15 @@ enum WeatherCondition {
   unknown,
 }
 
-@JsonSerializable()
-class Weather extends Equatable {
+@MappableClass()
+class Weather with WeatherMappable {
   const Weather({
     required this.location,
     required this.temperature,
     required this.condition,
   });
 
-  factory Weather.fromJson(Map<String, dynamic> json) =>
-      _$WeatherFromJson(json);
-
-  Map<String, dynamic> toJson() => _$WeatherToJson(this);
-
   final String location;
   final double temperature;
   final WeatherCondition condition;
-
-  @override
-  List<Object> get props => [location, temperature, condition];
 }

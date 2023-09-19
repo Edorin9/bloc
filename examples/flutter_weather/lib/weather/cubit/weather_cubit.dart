@@ -1,11 +1,10 @@
-import 'package:equatable/equatable.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:flutter_weather/weather/weather.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:weather_repository/weather_repository.dart'
     show WeatherRepository;
 
-part 'weather_cubit.g.dart';
+part 'weather_cubit.mapper.dart';
 part 'weather_state.dart';
 
 class WeatherCubit extends HydratedCubit<WeatherState> {
@@ -41,7 +40,7 @@ class WeatherCubit extends HydratedCubit<WeatherState> {
 
   Future<void> refreshWeather() async {
     if (!state.status.isSuccess) return;
-    if (state.weather == Weather.empty) return;
+    if (state.weather == Weather.empty()) return;
     try {
       final weather = Weather.fromRepository(
         await _weatherRepository.getWeather(state.weather.location),
@@ -74,7 +73,7 @@ class WeatherCubit extends HydratedCubit<WeatherState> {
     }
 
     final weather = state.weather;
-    if (weather != Weather.empty) {
+    if (weather != Weather.empty()) {
       final temperature = weather.temperature;
       final value = units.isCelsius
           ? temperature.value.toCelsius()
@@ -90,10 +89,10 @@ class WeatherCubit extends HydratedCubit<WeatherState> {
 
   @override
   WeatherState fromJson(Map<String, dynamic> json) =>
-      WeatherState.fromJson(json);
+      WeatherStateMapper.fromMap(json);
 
   @override
-  Map<String, dynamic> toJson(WeatherState state) => state.toJson();
+  Map<String, dynamic> toJson(WeatherState state) => state.toMap();
 }
 
 extension on double {

@@ -42,7 +42,7 @@ class WeatherPopulated extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '''Last Updated at ${TimeOfDay.fromDateTime(weather.lastUpdated).format(context)}''',
+                    '''Last Updated at ${TimeOfDay.fromDateTime(weather.lastUpdated.toLocal()).format(context)}''',
                   ),
                 ],
               ),
