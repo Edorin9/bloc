@@ -88,18 +88,11 @@ class WeatherCubit extends HydratedCubit<WeatherState> {
   }
 
   @override
-  WeatherState fromJson(Map<String, dynamic> json) {
-    print('json\n\n');
-    print(json);
-    return WeatherStateMapper.fromMap(json);
-  }
+  WeatherState fromJson(Map<String, dynamic> json) =>
+      WeatherStateMapper.fromMap(json);
 
   @override
-  Map<String, dynamic> toJson(WeatherState state) {
-    print('state\n\n');
-    print(state);
-    return state.toMap();
-  }
+  Map<String, dynamic> toJson(WeatherState state) => state.toMap();
 }
 
 extension on double {
