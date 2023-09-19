@@ -44,6 +44,9 @@ class OpenMeteoApiClient {
     }
 
     final locationJson = jsonDecode(locationResponse.body) as Map;
+    print(query);
+    print(locationResponse.body);
+    print(locationJson);
 
     if (!locationJson.containsKey('results')) throw LocationNotFoundFailure();
 
@@ -51,7 +54,7 @@ class OpenMeteoApiClient {
 
     if (results.isEmpty) throw LocationNotFoundFailure();
 
-    return Location.fromJson(results.first as Map<String, dynamic>);
+    return LocationMapper.fromMap(results.first as Map<String, dynamic>);
   }
 
   /// Fetches [Weather] for a given [latitude] and [longitude].
@@ -72,6 +75,7 @@ class OpenMeteoApiClient {
     }
 
     final bodyJson = jsonDecode(weatherResponse.body) as Map<String, dynamic>;
+    print(bodyJson);
 
     if (!bodyJson.containsKey('current_weather')) {
       throw WeatherNotFoundFailure();
@@ -79,6 +83,6 @@ class OpenMeteoApiClient {
 
     final weatherJson = bodyJson['current_weather'] as Map<String, dynamic>;
 
-    return Weather.fromJson(weatherJson);
+    return WeatherMapper.fromMap(weatherJson);
   }
 }

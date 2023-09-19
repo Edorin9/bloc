@@ -6,7 +6,7 @@ void main() {
     group('fromJson', () {
       test('returns correct Weather object', () {
         expect(
-          Weather.fromJson(
+          WeatherMapper.fromMap(
             <String, dynamic>{'temperature': 15.3, 'weathercode': 63},
           ),
           isA<Weather>()

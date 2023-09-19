@@ -1,15 +1,12 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-part 'weather.g.dart';
+part 'weather.mapper.dart';
 
-@JsonSerializable()
-class Weather {
+@MappableClass()
+class Weather with WeatherMappable {
   const Weather({required this.temperature, required this.weatherCode});
 
-  factory Weather.fromJson(Map<String, dynamic> json) =>
-      _$WeatherFromJson(json);
-
   final double temperature;
-  @JsonKey(name: 'weathercode')
+  @MappableField(key: 'weathercode')
   final double weatherCode;
 }

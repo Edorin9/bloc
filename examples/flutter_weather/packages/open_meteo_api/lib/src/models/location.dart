@@ -1,18 +1,15 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-part 'location.g.dart';
+part 'location.mapper.dart';
 
-@JsonSerializable()
-class Location {
+@MappableClass()
+class Location with LocationMappable {
   const Location({
     required this.id,
     required this.name,
     required this.latitude,
     required this.longitude,
   });
-
-  factory Location.fromJson(Map<String, dynamic> json) =>
-      _$LocationFromJson(json);
 
   final int id;
   final String name;

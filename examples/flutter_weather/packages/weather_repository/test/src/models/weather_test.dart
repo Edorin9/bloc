@@ -11,7 +11,7 @@ void main() {
         temperature: 10.2,
         location: 'Chicago',
       );
-      expect(Weather.fromJson(weather.toJson()), equals(weather));
+      expect(WeatherMapper.fromMap(weather.toMap()), equals(weather));
     });
   });
 }

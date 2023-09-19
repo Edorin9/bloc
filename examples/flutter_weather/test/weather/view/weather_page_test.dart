@@ -123,7 +123,7 @@ void main() {
           status: WeatherStatus.success,
           weather: weather,
           temperatureUnits: TemperatureUnits.fahrenheit,
-        ).toJson(),
+        ).toMap(),
       );
       await tester.pumpWidget(
         BlocProvider.value(
