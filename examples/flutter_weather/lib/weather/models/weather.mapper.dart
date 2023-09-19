@@ -84,25 +84,9 @@ class TemperatureMapper extends ClassMapperBase<Temperature> {
 
   @override
   final Function instantiate = _instantiate;
-
-  static Temperature fromMap(Map<String, dynamic> map) {
-    return _guard((c) => c.fromMap<Temperature>(map));
-  }
-
-  static Temperature fromJson(String json) {
-    return _guard((c) => c.fromJson<Temperature>(json));
-  }
 }
 
 mixin TemperatureMappable {
-  String toJson() {
-    return TemperatureMapper._guard((c) => c.toJson(this as Temperature));
-  }
-
-  Map<String, dynamic> toMap() {
-    return TemperatureMapper._guard((c) => c.toMap(this as Temperature));
-  }
-
   TemperatureCopyWith<Temperature, Temperature, Temperature> get copyWith =>
       _TemperatureCopyWithImpl(this as Temperature, $identity, $identity);
   @override
@@ -209,25 +193,9 @@ class WeatherMapper extends ClassMapperBase<Weather> {
 
   @override
   final Function instantiate = _instantiate;
-
-  static Weather fromMap(Map<String, dynamic> map) {
-    return _guard((c) => c.fromMap<Weather>(map));
-  }
-
-  static Weather fromJson(String json) {
-    return _guard((c) => c.fromJson<Weather>(json));
-  }
 }
 
 mixin WeatherMappable {
-  String toJson() {
-    return WeatherMapper._guard((c) => c.toJson(this as Weather));
-  }
-
-  Map<String, dynamic> toMap() {
-    return WeatherMapper._guard((c) => c.toMap(this as Weather));
-  }
-
   WeatherCopyWith<Weather, Weather, Weather> get copyWith =>
       _WeatherCopyWithImpl(this as Weather, $identity, $identity);
   @override

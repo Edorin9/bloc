@@ -10,7 +10,7 @@ extension WeatherStatusX on WeatherStatus {
   bool get isFailure => this == WeatherStatus.failure;
 }
 
-@MappableClass()
+@MappableClass(generateMethods: GenerateMethods.all)
 final class WeatherState with WeatherStateMappable {
   WeatherState({
     this.status = WeatherStatus.initial,
