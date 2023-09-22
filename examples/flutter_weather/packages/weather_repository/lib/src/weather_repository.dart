@@ -10,14 +10,14 @@ class WeatherRepository {
   final OpenMeteoApiClient _weatherApiClient;
 
   Future<Weather> getWeather(String city) async {
-    final location = await _weatherApiClient.locationSearch(city);
+    final coordinates = await _weatherApiClient.getCoordinates(city);
     final weather = await _weatherApiClient.getWeather(
-      latitude: location.latitude,
-      longitude: location.longitude,
+      latitude: coordinates.latitude,
+      longitude: coordinates.longitude,
     );
     return Weather(
       temperature: weather.temperature,
-      location: location.name,
+      location: coordinates.name,
       condition: weather.weatherCode.toInt().toCondition,
     );
   }

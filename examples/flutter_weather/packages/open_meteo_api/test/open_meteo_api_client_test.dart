@@ -38,7 +38,7 @@ void main() {
         when(() => response.body).thenReturn('{}');
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
         try {
-          await apiClient.locationSearch(query);
+          await apiClient.getCoordinates(query);
         } catch (_) {}
         verify(
           () => httpClient.get(
@@ -56,7 +56,7 @@ void main() {
         when(() => response.statusCode).thenReturn(400);
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
         expect(
-          () async => apiClient.locationSearch(query),
+          () async => apiClient.getCoordinates(query),
           throwsA(isA<LocationRequestFailure>()),
         );
       });
@@ -67,7 +67,7 @@ void main() {
         when(() => response.body).thenReturn('{}');
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
         await expectLater(
-          apiClient.locationSearch(query),
+          apiClient.getCoordinates(query),
           throwsA(isA<LocationNotFoundFailure>()),
         );
       });
@@ -78,7 +78,7 @@ void main() {
         when(() => response.body).thenReturn('{"results": []}');
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
         await expectLater(
-          apiClient.locationSearch(query),
+          apiClient.getCoordinates(query),
           throwsA(isA<LocationNotFoundFailure>()),
         );
       });
@@ -100,7 +100,7 @@ void main() {
 }''',
         );
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
-        final actual = await apiClient.locationSearch(query);
+        final actual = await apiClient.getCoordinates(query);
         expect(
           actual,
           isA<Location>()

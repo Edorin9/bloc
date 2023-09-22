@@ -38,12 +38,12 @@ void main() {
         try {
           await weatherRepository.getWeather(city);
         } catch (_) {}
-        verify(() => weatherApiClient.locationSearch(city)).called(1);
+        verify(() => weatherApiClient.getCoordinates(city)).called(1);
       });
 
       test('throws when locationSearch fails', () async {
         final exception = Exception('oops');
-        when(() => weatherApiClient.locationSearch(any())).thenThrow(exception);
+        when(() => weatherApiClient.getCoordinates(any())).thenThrow(exception);
         expect(
           () async => weatherRepository.getWeather(city),
           throwsA(exception),
@@ -54,7 +54,7 @@ void main() {
         final location = MockLocation();
         when(() => location.latitude).thenReturn(latitude);
         when(() => location.longitude).thenReturn(longitude);
-        when(() => weatherApiClient.locationSearch(any())).thenAnswer(
+        when(() => weatherApiClient.getCoordinates(any())).thenAnswer(
           (_) async => location,
         );
         try {
@@ -73,7 +73,7 @@ void main() {
         final location = MockLocation();
         when(() => location.latitude).thenReturn(latitude);
         when(() => location.longitude).thenReturn(longitude);
-        when(() => weatherApiClient.locationSearch(any())).thenAnswer(
+        when(() => weatherApiClient.getCoordinates(any())).thenAnswer(
           (_) async => location,
         );
         when(
@@ -96,7 +96,7 @@ void main() {
         when(() => location.longitude).thenReturn(longitude);
         when(() => weather.temperature).thenReturn(42.42);
         when(() => weather.weatherCode).thenReturn(0);
-        when(() => weatherApiClient.locationSearch(any())).thenAnswer(
+        when(() => weatherApiClient.getCoordinates(any())).thenAnswer(
           (_) async => location,
         );
         when(
@@ -124,7 +124,7 @@ void main() {
         when(() => location.longitude).thenReturn(longitude);
         when(() => weather.temperature).thenReturn(42.42);
         when(() => weather.weatherCode).thenReturn(1);
-        when(() => weatherApiClient.locationSearch(any())).thenAnswer(
+        when(() => weatherApiClient.getCoordinates(any())).thenAnswer(
           (_) async => location,
         );
         when(
@@ -152,7 +152,7 @@ void main() {
         when(() => location.longitude).thenReturn(longitude);
         when(() => weather.temperature).thenReturn(42.42);
         when(() => weather.weatherCode).thenReturn(51);
-        when(() => weatherApiClient.locationSearch(any())).thenAnswer(
+        when(() => weatherApiClient.getCoordinates(any())).thenAnswer(
           (_) async => location,
         );
         when(
@@ -180,7 +180,7 @@ void main() {
         when(() => location.longitude).thenReturn(longitude);
         when(() => weather.temperature).thenReturn(42.42);
         when(() => weather.weatherCode).thenReturn(71);
-        when(() => weatherApiClient.locationSearch(any())).thenAnswer(
+        when(() => weatherApiClient.getCoordinates(any())).thenAnswer(
           (_) async => location,
         );
         when(
@@ -208,7 +208,7 @@ void main() {
         when(() => location.longitude).thenReturn(longitude);
         when(() => weather.temperature).thenReturn(42.42);
         when(() => weather.weatherCode).thenReturn(-1);
-        when(() => weatherApiClient.locationSearch(any())).thenAnswer(
+        when(() => weatherApiClient.getCoordinates(any())).thenAnswer(
           (_) async => location,
         );
         when(
