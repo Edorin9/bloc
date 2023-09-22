@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:open_meteo_api/open_meteo_api.dart' hide Weather;
-import 'package:weather_repository/weather_repository.dart';
+
+import 'models/models.dart';
 
 class WeatherRepository {
   WeatherRepository({OpenMeteoApiClient? weatherApiClient})

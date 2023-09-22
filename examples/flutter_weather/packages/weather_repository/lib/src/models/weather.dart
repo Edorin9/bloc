@@ -1,15 +1,8 @@
 import 'package:dart_mappable/dart_mappable.dart';
 
-part 'weather.mapper.dart';
+import 'models.dart';
 
-@MappableEnum()
-enum WeatherCondition {
-  clear,
-  rainy,
-  cloudy,
-  snowy,
-  unknown,
-}
+part 'weather.mapper.dart';
 
 @MappableClass()
 class Weather with WeatherMappable {

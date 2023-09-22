@@ -4,14 +4,6 @@ import 'package:weather_repository/weather_repository.dart'
 
 part 'weather.mapper.dart';
 
-@MappableEnum()
-enum TemperatureUnits { fahrenheit, celsius }
-
-extension TemperatureUnitsX on TemperatureUnits {
-  bool get isFahrenheit => this == TemperatureUnits.fahrenheit;
-  bool get isCelsius => this == TemperatureUnits.celsius;
-}
-
 @MappableClass()
 class Temperature with TemperatureMappable {
   const Temperature({required this.value});

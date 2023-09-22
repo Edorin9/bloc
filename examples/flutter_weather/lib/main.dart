@@ -14,5 +14,9 @@ void main() async {
         ? HydratedStorage.webStorageDirectory
         : await getTemporaryDirectory(),
   );
-  runApp(WeatherApp(weatherRepository: WeatherRepository()));
+  runApp(
+    WeatherApp(
+      weatherRepository: WeatherRepository(),
+    ),
+  );
 }

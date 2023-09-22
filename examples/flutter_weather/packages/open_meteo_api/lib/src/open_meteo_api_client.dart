@@ -2,23 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:open_meteo_api/open_meteo_api.dart';
 
-/// Exception thrown when locationSearch fails.
-class LocationRequestFailure implements Exception {}
+import 'failures.dart';
+import 'models/models.dart';
 
-/// Exception thrown when the provided location is not found.
-class LocationNotFoundFailure implements Exception {}
-
-/// Exception thrown when getWeather fails.
-class WeatherRequestFailure implements Exception {}
-
-/// Exception thrown when weather for provided location is not found.
-class WeatherNotFoundFailure implements Exception {}
-
-/// {@template open_meteo_api_client}
 /// Dart API Client which wraps the [Open Meteo API](https://open-meteo.com).
-/// {@endtemplate}
 class OpenMeteoApiClient {
   /// {@macro open_meteo_api_client}
   OpenMeteoApiClient({http.Client? httpClient})
