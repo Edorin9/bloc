@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/weather/weather.dart';
+
+import '../weather.dart';
 
 class WeatherPopulated extends StatelessWidget {
   const WeatherPopulated({

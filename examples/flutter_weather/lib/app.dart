@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_repository/weather_repository.dart';
 
-import '../theme/theme.dart';
-import '../weather/weather.dart';
+import 'theme/theme.dart';
+import 'weather/weather.dart';
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({required WeatherRepository weatherRepository, super.key})

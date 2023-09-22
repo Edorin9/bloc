@@ -1,8 +1,9 @@
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:flutter_weather/weather/weather.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:weather_repository/weather_repository.dart'
     show WeatherRepository;
+
+import '../weather.dart';
 
 part 'weather_cubit.mapper.dart';
 part 'weather_state.dart';
